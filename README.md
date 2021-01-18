@@ -43,8 +43,9 @@
     "name": "Julio Cornejo"
   }
   ```
+
 - `GET: author` Returns a list with all the existing authors
-  ```json
+```json
   {
       "authors":[
           {
@@ -57,7 +58,7 @@
           }
       ]
   }
-  ```  
+```  
 
 - `GET: /book/:id` Returns a book with the author
 ```json
@@ -83,7 +84,7 @@
   ```
 
 - `GET: /book` Returns a list with all the existing books including their authors
-  ```json
+```json
   [
       {
           "id": 1,
