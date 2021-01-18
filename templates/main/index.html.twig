@@ -1,0 +1,160 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+    <style>
+        pre { font-family: monospace; }
+    </style>
+{% endblock %}
+{% block body %}
+    <div class="container">
+        <div class="row">
+            <h3>API documentation</h3>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <h4><pre>GET: /author/:id</pre> Returns an author with all their books</h4>
+            </div>
+        <div class="row">
+            <div class="col-3">
+                <pre>
+                    {
+                        "author": {
+                            "id": 3,
+                            "name": "Rodriguez"
+                        },
+                        "books": [
+                            {
+                                "id": 4,
+                                "name": "El vacilon"
+                            },
+                            {
+                                "id": 5,
+                                "name": "3 tristes tigres"
+                            }
+                        ]
+                }
+                </pre>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-12">
+                <h4><pre>POST: /author</pre> Creates an author</h4>
+                <div class="row">
+                    <div class="col-3">
+                        Example request (using cUrl)
+                        <pre>
+                         % curl -v -X POST -H "Content-Type: application/json" --data '{"author": "Julio Cornejo"}' &lt;server&gt;:&lt;port&gt;/author
+                    </pre>
+                        Example response
+                        <pre>
+                        {
+                            "id": 13,
+                            "name": "Julio Cornejo"
+                        }
+                    </pre>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-12">
+                <h4><pre>GET: /author</pre> Returns a list with all the existing authors</h4>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <pre>
+                        {
+                            "authors":[
+                                {
+                                    "id":1,
+                                    "name":"Julio Cornejo"
+                                },
+                                {
+                                    "id":2,
+                                    "name":"Matheus Miranda"
+                                }
+                            ]
+                        }
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-12">
+                <h4><pre>GET: /book/:id</pre> Returns a book with the author</h4>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    <pre>
+                    {
+                        "id": 1,
+                        "author": "Pinocchio",
+                        "name": "La historia secreta de Geppetto"
+                    }
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-12">
+                <h4><pre>POST: /book</pre> Creates a book and adds an author to it. (important `author` is the `id` of an existent author)</h4>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                    Example request (using cUrl)
+                    <pre>
+                % curl -v -X POST -H "Content-Type: application/json" --data '{"author": 3, "name":"El monte"}' &lt;server&gt;:&lt;port&gt;/book
+                </pre>
+                    Example response
+                    <pre>
+                    {
+                        "id": 6,
+                        "author": "Rodriguez",
+                        "name": "El monte"
+                    }
+                    </pre>
+                </div>
+            </div>
+        </div>
+        <hr class="solid">
+        <div class="row">
+            <div class="col-12">
+                <h4><pre>GET: /book</pre> Returns a list with all the existing books including their authors</h4>
+            </div>
+            <div class="row">
+                <div class="col-3">
+                <pre>
+                [
+                    {
+                        "id": 1,
+                        "name": "Rodriguez",
+                        "books": [
+                            {
+                                "id": 2,
+                                "name": "Libro gordo de Petete"
+                            }
+                        ]
+                    },
+                    {
+                        "id": 2,
+                        "name": "Pinocchio",
+                        "books": [{
+                            "id": 1,
+                            "name": "La historia secreta de Geppetto"
+                        },
+                        {
+                            "id": 3,
+                            "name": "Bartholomew Jojo Simpson"
+                        }]
+                    }
+                ]
+                </pre>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

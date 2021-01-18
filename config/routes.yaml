@@ -1,0 +1,34 @@
+index:
+    path: /
+    controller: App\Controller\MainController:index
+    methods: GET
+
+authors_post:
+    path: /author
+    controller: App\Controller\MainController::authorsPost
+    methods: POST
+
+authors_get_all:
+    path: /author
+    controller: App\Controller\MainController::authorsGetAll
+    methods: GET
+
+authors_get:
+    path: /author/{id}
+    controller: App\Controller\MainController::authorsGet
+    methods: GET
+
+books_post:
+    path: /book
+    controller: App\Controller\MainController::booksPost
+    methods: POST
+
+books_get_all:
+    path: /book
+    controller: App\Controller\MainController::booksGetAll
+    methods: GET
+
+books_get:
+    path: /book/{id}
+    controller: App\Controller\MainController::booksGet
+    methods: GET
